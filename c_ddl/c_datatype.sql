@@ -114,8 +114,55 @@ create table `character` (
 insert into `character`
 values ('Laptop', '전자제품', '삼성 갤럭시 북4 노트북 프로', 'example.com');
 
+/*
+	3. 실수형
+    : 소수점이 있는 숫자를 저장할 때 사용
+    - float, double, decimal
+    
+    a) float
+		: 총 7자리까지 표현
+        - 소수점 이하는 2자리까지 (정수 5자리)
+        EX) 시력, 가격 등
+    
+    b) double
+		: 총 10자리까지 표현
+        - 소수점 이하는 4자리까지 가능 (정수 6자리)
+        - 구체적인 값을 표현할 수 있음
+        
+	c) decimal | numeric
+		: 고정 소수점 타입, 정밀한 소수점 계산에 필요
+*/
 
+create table products (
+	# 실수형 데이터는 함수 형태로 사용(호출)
+    # : 데이터타입(전체 자리수, 소수점 이하 자리수)
+	price float(7, 2),
+    price2 double(10, 4),
+    price3 decimal(15, 2)
+);
 
+insert into products
+values (12345.67, 123456.7890, 9999999999999.99);
 
+/*
+	4. 논리형
+    : boolean 값을 저장하기 위한 데이터 타입
+    : 논리적으로 참(True)과 거짓(False) 값을 나타냄
+    
+    cf) 비워 둘 경우 null(알 수 없음, 부재한 값)으로 인식
+    
+    cf) MySQL에서는 Boolean 타입이 존재하지만, 실제(내부적으로)로는 tinyint(1)로 처리
+    >> True는 1, False는 0으로 저장
+    
+    cf) Boolean 값에 대소문자 구분 X
+*/
 
+create table employees (
+	is_Senior Boolean
+);
 
+insert into `employees`
+values (true);
+
+select * from `employees`;
+# true 값이 1로 변환되어 저장됨
