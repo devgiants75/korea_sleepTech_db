@@ -20,10 +20,26 @@
 		> where > group by > having > select > order by > limit
 */
 
+use `korea_db`;
 
+## 1. 기본 조회 ##
+# : select 컬럼명 from 데이터베이스명.테이블명;
 
+select `name` from `korea_db`.`members`;
+# : 정렬을 하지 않고 조회 시 데이터 입력 순서대로 출력
 
+# cf) 전체 컬럼 조회(전체 테이블 조회)
+# 컬럼명 작성에 *를 사용하여 조회
+select * from `korea_db`.`members`; -- 회원 테이블
+select * from `korea_db`.`purchases`; -- 구매 목록 테이블
 
+# cf) 두 개 이상의 컬럼을 조회 (,) 콤마로 구분하여 나열
+select 
+	`member_id`, `name`, `contact`
+from 
+	`members`;
+
+# cf) alias 별칭 부여 조회
 
 
 
