@@ -136,6 +136,10 @@ values
 ### 외래 키 제약 조건 수정(삭제 & 추가) ###
 # cf) 외래 키 제약 조건 삭제 시 주의점
 #	- 해당 데이터를 참조하는 데이터가 있을 경우 삭제 불가!
+truncate table `orders`;
+select * from `orders`;
+desc `orders`;
+
 #   - 제약 조건 이름 검색이 필수
 
 # 외래 키 제약 조건 이름 확인 #
@@ -160,3 +164,21 @@ add constraint
 
 desc `orders`;
 desc `members`;
+
+/*
+	3. Unique
+	: 특정 열에 대해 모든 값이 고유해야 함을 보장
+    : 한 테이블 내에서 여러 개 지정 가능 (각각 다른 컬럼에 독립적으로 적용 가능)
+    - Null 값 허용 (cf. PK는 Unique + Not Null + 한 테이블에 하나만!)
+*/
+
+create table `users` (
+	user_id int primary key,
+    user_email varchar(100) unique,
+    user_number varchar(100) unique
+);
+
+-- insert into `users`
+-- values
+-- 	(1, '전창현', 'qwe123'),
+-- 	(2, '문창배', 'qwe123');
