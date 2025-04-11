@@ -26,7 +26,7 @@ create table `korea_db`.`members`(
     area_code varchar(10) not null,
     grade enum('Bronze', 'Silver', 'Gold', 'Platinum', 'Diamond') default 'Bronze' not null, 
     contact varchar(20) not null,
-    points smallint default 0 not null,
+    points smallint default 0,
 	join_date date not null
 );
 
@@ -70,6 +70,3 @@ desc `purchases`;
 
 select * from `members`;
 select * from `purchases`;
-
-
-
