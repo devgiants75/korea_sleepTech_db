@@ -137,11 +137,8 @@ values
 # cf) 외래 키 제약 조건 삭제 시 주의점
 #	- 해당 데이터를 참조하는 데이터가 있을 경우 삭제 불가!
 truncate table `orders`;
-select * from `orders`;
-desc `orders`;
 
 #   - 제약 조건 이름 검색이 필수
-
 # 외래 키 제약 조건 이름 확인 #
 select constraint_name
 from information_schema.key_column_usage
@@ -154,7 +151,13 @@ where table_name = 'orders' and column_name = 'member_id';
 alter table `orders`
 drop foreign key orders_ibfk_1;
 
-desc `orders`;
+desc `orders`; 
+# MUL - 외래 키 지정 시 MySQL이 자동으로 인덱스(index)를 생성 / 외래 키 삭제 후 남아있음
+
+select constraint_name
+from information_schema.key_column_usage
+# where 조건 내에서 테이블명과 컬럼명을 데이터처럼 사용: 따옴표 지정
+where table_name = 'orders' and column_name = 'member_id';
 
 # 2) '기존 테이블의' 외래 키 제약조건 추가
 alter table `orders`
