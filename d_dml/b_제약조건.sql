@@ -185,3 +185,5 @@ create table `users` (
 -- values
 -- 	(1, '전창현', 'qwe123'),
 -- 	(2, '문창배', 'qwe123');
+
+drop database if exists `example`;
