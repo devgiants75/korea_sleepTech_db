@@ -141,7 +141,6 @@ select * from `example02`;
     delete from `테이블명`
     where 조건;
 */
-
 select * from `example02`;
 
 # delete from `example02`;
