@@ -56,7 +56,18 @@ values
 	(1, '임재혁', 101),
 	(2, '오선우', 102),
 	(3, '이준우', 102);
+    
+# 학생 번호 > 강의 ID
+# 강의 ID > 강의 위치
+# : 하나의 테이블에서 A > B > C의 이행적 종속성을 분리하여
+# 	A > B
+#   B > C 로 구조화
+#   - 학생의 정보에서 조인을 통해 강의 위치를 확인
+select * from departments_3;
 
+select S.student_id, S.name, D.department_name, D.location
+from students_3 S
+	join departments_3 D
+    on S.department_id = D.department_id;
 
-
-
+##### 서로 다른 종류의 정보를 따로 담아야 안전함 #####
