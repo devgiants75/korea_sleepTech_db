@@ -70,11 +70,11 @@ start transaction;
 # 이후 SQL문은 하나의 명령문으로 처리
 insert into members 
 values
-	(3, '이승아', 30);
+	(5, '이승아', 30);
     
 insert into purchases
 values
-	(3, 2, '노트북', 200); # 외래키 제약 조건 오류
+	(5, 999, '노트북', 200); # 외래키 제약 조건 오류
 
 commit; # 예외가 없으면 변경 사항을 저장
 
@@ -85,7 +85,7 @@ select * from purchases;
 create table `accounts` (
 	account_id int primary key auto_increment,
     account_holder varchar(50),
-    balance int
+    balance int unsigned
 );
 
 create table transaction_log (
@@ -106,7 +106,7 @@ values
 ### 스토어드 프로시저 작성: SQL 내의 조건문이나 반복문은 SQL 스크립트 내에서 바로 실행X, 프로시저나 트리거 내에서 사용 ###
 delimiter $$
 
-create procedure tansfer_money()
+create procedure transfer_money()
 begin
 	declare from_balance int; -- 변수 선언
     
@@ -142,12 +142,11 @@ begin
 		rollback;
 
 	end if;
-
-	set autocommit = 1;
 end $$
 
 delimiter ;
 
-call tansfer_money();
+call transfer_money();
 
+select * from accounts;
 select * from transaction_log;
