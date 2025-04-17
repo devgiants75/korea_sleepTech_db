@@ -61,7 +61,7 @@ VALUES (1, 101),
        (3, 103),
        (4, 104);
 /*
-1. 뷰 이름: studentCourseView
+1. 뷰 이름: student_course_view
 
 2. 뷰에는 아래 네 가지 컬럼이 포함되어야 함
 	1) student_first_name: 학생의 이름 (students.first_name)
