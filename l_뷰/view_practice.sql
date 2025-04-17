@@ -22,6 +22,22 @@ use school;
 # >> 위의 두 컬럼을 복합키로 설정(기본키)
 # >> 각 컬럼은 students, courses 테이블에서 참조
 
+INSERT INTO Students (StudentID, FirstName, LastName, Age, Major)
+VALUES (1, 'John', 'Doe', 20, 'Computer Science'),
+       (2, 'Jane', 'Smith', 22, 'Mathematics'),
+       (3, 'Alice', 'Johnson', 19, 'Biology'),
+       (4, 'Bob', 'Brown', 21, 'History');
 
+INSERT INTO Courses (CourseID, CourseName, Instructor, CreditHours)
+VALUES (101, 'Introduction to Programming', 'Prof. Smith', 3),
+       (102, 'Calculus I', 'Prof. Johnson', 4),
+       (103, 'Biology 101', 'Prof. Davis', 3),
+       (104, 'World History', 'Prof. Wilson', 3);
+       
+INSERT INTO StudentCourse (StudentID, CourseID)
+VALUES (1, 101),
+       (2, 102),
+       (3, 103),
+       (4, 104);
 
 
