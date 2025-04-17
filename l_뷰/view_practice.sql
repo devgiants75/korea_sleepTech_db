@@ -60,5 +60,30 @@ VALUES (1, 101),
        (2, 102),
        (3, 103),
        (4, 104);
+/*
+1. 뷰 이름: studentCourseView
 
+2. 뷰에는 아래 네 가지 컬럼이 포함되어야 함
+	1) student_first_name: 학생의 이름 (students.first_name)
+	2) student_last_name: 학생의 성 (students.last_name)
+	3) course_name: 수강 과목 이름 (courses.course_name)
+	4) instructor: 담당 강사 이름 (courses.instructor)
 
+3. StudentCourse 테이블을 기준으로 Students와 Courses를 각각 INNER JOIN
+
+4. 뷰가 정상적으로 생성되었는지 확인(조회)
+*/
+
+DROP VIEW IF EXISTS student_course_view;
+create view student_course_view as
+select
+	s.first_name as student_first_name,
+    s.last_name as student_last_name,
+    c.course_name,
+    c.instructor
+from
+	student_courses sc
+inner join students s on sc.student_id = s.student_id
+inner join courses c on sc.course_id = c.course_id;
+
+select * from student_course_view;
