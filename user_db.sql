@@ -1,0 +1,13 @@
+##### user_db #####
+
+CREATE DATABASE IF NOT EXISTS user_db 
+DEFAULT CHARACTER SET utf8mb4 COLLATE UTF8mb4_general_ci;
+
+USE user_db;
+
+CREATE TABLE user (
+	id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    country VARCHAR(100) NOT NULL
+);
